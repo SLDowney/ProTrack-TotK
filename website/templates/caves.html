@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for cave in caves_data %}
+<table class="cave_table">
+    <h2></h2>
+    <head>
+        <th class="table_name" colspan="4">{{cave.name}}</th>
+    </head>
+    <tbody>
+        <!-- <div class="cave_info"> -->
+            <tr>
+                <td>Region</td>
+                <td>Coordinates</td>
+                {% if cave.bfrog != "x" %}
+                    <td>Bubblfrog</td>
+                {% endif %}
+                {% if cave.shrine != "x" %}
+                    <td>Shrine</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td>{{ cave.region }}</td>
+                <td>{{ cave.coord }}</td>
+                {% if cave.bfrog != "x" %}
+                <td>
+                    <button 
+                        data-item="cave_radio" 
+                        id="{{cave.id}}"
+                        bfrog="{{cave.bfrog}}"
+                        {% if cave.bfrog_done == 0 %} 
+                            value=0 
+                            class="item-button notfound"
+                        {% elif cave.bfrog_done == 1 %}
+                            value=1
+                            class="item-button completed"
+                        {% endif %}
+                        onclick="cycleBfrog(this)">
+                        {{cave.bfrog}}
+                    </button>
+                </td>
+                {% endif %}
+                {% if cave.shrine != "x" %}
+                    <td>{{ cave.shrine }}</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <button 
+                        data-item="cave_radio" 
+                        id="{{cave.id}}"
+                        title="{{cave.title}}"
+                        chest="{{cave.chest}}"
+                        region="{{cave.region}}"
+                        quest="{{cave.quest}}"
+                        {% if cave.done == '0' %} 
+                            value=0 
+                            class="item-button cave_{{cave.id}} notfound"
+                        {% elif cave.done == '1' %}
+                            value=1
+                            class="item-button cave_{{cave.id}} started"
+                        {% elif cave.done == '2' %}
+                            value=2
+                            class="item-button cave_{{cave.id}} completed"
+                        {% endif %}
+                        onclick="cycleValues(this)">
+                        {% if cave.done == '0' %} 
+                            Not Found
+                        {% elif cave.done == '1' %}
+                            Found
+                        {% elif cave.done == '2' %}
+                            Completed
+                        {% endif %}
+                    </button>
+                </td>
+            </tr>
+        <!-- </div> -->
+    </tbody>
+</table>
+{% endfor %}
+<script src="{{ url_for('static', filename='caves.js') }}"></script>
+{% endblock %}

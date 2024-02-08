@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<select id="item" name="item_region">
+    <option value="-1">Choose One</option>
+    {% for region in unique_regions %}
+      <!-- Populate this dropdown with items from your database -->
+      <option id="{{region}}"
+              type="option"
+              value="{{ region }}">
+              {{ region }}
+      </option>
+    {% endfor %}        
+    </select>
+    <button id="addison_search" type="submit" onclick="updateSort(this)">Search</button>
+{% for addison in addisons_data %}
+    <div class="addison">
+        <table class="addison_table">
+            <tr>
+                <th class="table_th">Done</th>
+                <td>
+                    <button 
+                        data-item="addison_radio" 
+                        id="{{addison.addison_id}}"
+                        item="{{addison.addison_item}}"
+                        type="{{addison.addison_type}}"
+                        region="{{addison.region}}"
+                        {% if addison.addison_done == 0 %} 
+                            value=0 
+                            class="item-button addison_{{addison.addison_id}} notfound"
+                        {% elif addison.addison_done == 1 %}
+                            value=1
+                            class="item-button addison_{{addison.addison_id}} completed"
+                        {% endif %}
+                        onclick="cycleValues(this)">
+                        {% if addison.addison_done == 0 %} 
+                            Not Found
+                        {% elif addison.addison_done == 1 %}
+                            Found
+                        {% endif %}
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th class="table_th">Name</th>
+                <td class="table_td">{{ addison.addison_name }}</td>
+            </tr>
+            <tr>
+                <th class="table_th">Type</th>
+                <td class="table_td">{{ addison.addison_type }}</td>
+            </tr>
+            {% if addison.startcoord != "\\N" %}
+            <tr>
+                <th class="table_th">Start Coord</th>
+                <td class="table_td">{{ addison.startcoord }}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <th class="table_th">Coord</th>
+                <td class="table_td">{{ addison.coord }}</td>
+            </tr>
+            <tr>
+                <th class="table_th">Location</th>
+                <td class="table_td">{{ addison.location }}</td>
+            </tr>
+            <tr>
+                <th class="table_th">Region</th>
+                <td class="table_td">{{ addison.region }}</td>
+            </tr>
+            <tr>
+                <th class="table_th">Tower</th>
+                <td class="table_td">{{ addison.tower }}</td>
+            </tr>
+        </table>
+    </div>
+{% endfor %}
+<script src="{{ url_for('static', filename='addisons.js') }}"></script>
+{% endblock %}

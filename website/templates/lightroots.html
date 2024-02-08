@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<select id="item" name="item_region">
+    <option value="-1">Choose One</option>
+    {% for region in unique_regions %}
+      <!-- Populate this dropdown with items from your database -->
+      <option id="{{region}}"
+              type="option"
+              value="{{ region }}">
+              {{ region }}
+      </option>
+    {% endfor %}        
+    </select>
+    <button id="lightroot_search" type="submit" onclick="updateSort(this)">Search</button>
+{% for lightroot in lightroots_data %}
+        <table class="table">
+            <tr>
+                <th class="table_th">Done</th>
+                <td>
+                    <button 
+                        data-item="lightroot_radio" 
+                        id="{{lightroot.root_id}}"
+                        name="'{{lightroot.root_name}}"
+                        region="{{lightroot.root_region}}"
+                        {% if lightroot.root_done == 0 %} 
+                            value=0 
+                            class="item-button lightroot_{{lightroot.root_id}} notfound"
+                        {% elif lightroot.root_done == 1 %}
+                            value=1
+                            class="item-button lightroot_{{lightroot.root_id}} completed"
+                        {% endif %}
+                        onclick="cycleValues(this)">
+                        {% if lightroot.root_done == 0 %} 
+                            Not Found
+                        {% elif lightroot.root_done == 1 %}
+                            Found
+                        {% endif %}
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th class="table_th">Name</th>
+                <td>{{ lightroot.root_name }}</td>
+            </tr>
+            <tr>
+                <th class="table_th">Coord</th>
+                <td>{{ lightroot.root_coord }}</td>
+            </tr>
+            <tr>
+                <th class="table_th">Region</th>
+                <td>{{ lightroot.root_region }}</td>
+            </tr>
+        </table>
+{% endfor %}
+<script src="{{ url_for('static', filename='lightroots.js') }}"></script>
+{% endblock %}

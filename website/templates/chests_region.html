@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for chest in chests_data %}
+    <div class="chest">
+        <table class="chest_table">
+            <tr>
+                <th class="chest_th">Done</th>
+                <td>
+                    <button 
+                        data-item="chest_radio" 
+                        id="{{chest.chest_id}}"
+                        item="{{chest.chest_item}}"
+                        type="{{chest.chest_type}}"
+                        region="{{chest.chest_region}}"
+                        quest="{{chest.chest_quest}}"
+                        {% if chest.chest_done == 0 %} 
+                            value=0 
+                            class="item-button chest_{{chest.chest_id}} notfound"
+                        {% elif chest.chest_done == 1 %}
+                            value=1
+                            class="item-button chest_{{chest.chest_id}} completed"
+                        {% endif %}
+                        onclick="cycleValues(this)">
+                        {% if chest.chest_done == 0 %} 
+                            Not Found
+                        {% elif chest.chest_done == 1 %}
+                            Found
+                        {% endif %}
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th class="chest_th">Item</th>
+                <td>{{ chest.chest_item }}</td>
+            </tr>
+            <tr>
+                <th class="chest_th">Type</th>
+                <td>{{ chest.chest_type }}</td>
+            </tr>
+            <tr>
+                <th class="chest_th">Coord</th>
+                <td>{{ chest.chest_coord }}</td>
+            </tr>
+            <tr>
+                <th class="chest_th">Location</th>
+                <td>{{ chest.chest_location }}</td>
+            </tr>
+            <tr>
+                <th class="chest_th">Region</th>
+                <td>{{ chest.chest_region }}</td>
+            </tr>
+            {% if chest.chest_sideq != "X" %}
+            <tr>
+                <th class="chest_th">Side Quest</th>
+                <td>{{ chest.chest_sideq }}</td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+{% endfor %}
+<script src="{{ url_for('static', filename='chests.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='main.css') }}">
+</head>
+<body>
+    <nav id="nav">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('chest_page') }}">Chests</a>
+        <a href="{{ url_for('shrine_page') }}">Shrines</a>
+        <a href="{{ url_for('lightroot_page') }}">Lightroots</a>
+        <a href="{{ url_for('cave_page') }}">Caves</a>
+        <a href="{{ url_for('korok_page') }}">Koroks</a>
+        <a href="{{ url_for('compendium_page') }}">Compendium</a>
+        <a href="{{ url_for('armors') }}">Armors</a>
+        <a href="{{ url_for('well_page') }}">Wells</a>
+        <a href="{{ url_for('mines_page') }}">Depths Mines</a>
+        <a href="{{ url_for('tear_page') }}">Dragons Tears</a>
+    </nav>
+    <hr>
+    <h1>{{headline}}</h1>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

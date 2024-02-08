@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form id="addChest" method="POST" enctype="multipart/form-data">
+    <div id="new_chest_input">
+        <div class="new_chest_items">
+            <label class="add_chest_label" for="chest_sideq">Side Quest</label><input class="add_chest" type="text" id="chest_sideq" name="chest_sideq" >
+		</div>
+		<div class="new_chest_items">
+            <label class="add_chest_label" for="chest_region">Region</label><input class="add_chest" type="text" id="chest_region" name="chest_region" >
+		</div>
+		<div class="new_chest_items">
+            <label class="add_chest_label" for="chest_location">Location</label><input class="add_chest" type="text" id="chest_location" name="chest_location" >
+		</div>
+		<div class="new_chest_items">
+            <label class="add_chest_label" for="chest_coord">Coordinates</label><input class="add_chest" type="text" id="chest_coord" name="chest_coord" >
+		</div>
+		<div class="new_chest_items">
+            <label class="add_chest_label" for="chest_type">Type</label><input class="add_chest" type="text" id="chest_type" name="chest_type" >
+		</div>
+		<div class="new_chest_items">
+            <label class="add_chest_label" for="chest_item">Item</label><input class="add_chest" type="text" id="chest_item" name="chest_item" required>
+		</div>
+		<div id="new_chest_radio" class="new_chest_items">
+            <label class="chest_radio" for="done"><input class="chest_radio" type="checkbox" id="done" name="done" {% if checked %} checked {% endif %}>Collected</label>
+		</div>
+	</div>
+        <button id="new_chest_submit" class="add_chest_label" type="button" onclick="addChest(this)">Add Chest</button>
+</form>
+
+<select id="item" name="item_region">
+    <option value="-1">Choose One</option>
+    {% for region in unique_regions %}
+      <!-- Populate this dropdown with items from your database -->
+      <option id="{{region}}"
+              type="option"
+              value="{{ region }}">
+              {{ region }}
+      </option>
+    {% endfor %}        
+    </select>
+    <button id="chest_search" type="submit" onclick="updateSort(this)">Search</button>
+{% for chest in chests_data %}
+    <div class="chest">
+        <table class="table">
+            <tr>
+                <th class="table_th">Done</th>
+                <td>
+                    <button 
+                        data-item="chest_radio" 
+                        id="{{chest.chest_id}}"
+                        item="{{chest.chest_item}}"
+                        type="{{chest.chest_type}}"
+                        region="{{chest.chest_region}}"
+                        quest="{{chest.chest_quest}}"
+                        {% if chest.chest_done == 0 %} 
+                            value=0 
+                            class="item-button chest_{{chest.chest_id}} notfound"
+                        {% elif chest.chest_done == 1 %}
+                            value=1
+                            class="item-button chest_{{chest.chest_id}} completed"
+                        {% endif %}
+                        onclick="cycleValues(this)">
+                        {% if chest.chest_done == 0 %} 
+                            Not Found
+                        {% elif chest.chest_done == 1 %}
+                            Found
+                        {% endif %}
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th class="table_th">Item</th>
+                <td>{{ chest.chest_item }}</td>
+            </tr>
+            <tr>
+                <th class="table_th">Type</th>
+                <td>{{ chest.chest_type }}</td>
+            </tr>
+            <tr>
+                <th class="table_th">Coord</th>
+                <td>{{ chest.chest_coord }}</td>
+            </tr>
+            <tr>
+                <th class="table_th">Location</th>
+                <td>{{ chest.chest_location }}</td>
+            </tr>
+            <tr>
+                <th class="table_th">Region</th>
+                <td>{{ chest.chest_region }}</td>
+            </tr>
+            {% if chest.chest_sideq != None %}
+            <tr>
+                <th class="table_th">Side Quest</th>
+                <td>{{ chest.chest_sideq }}</td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+{% endfor %}
+<script src="{{ url_for('static', filename='chests.js') }}"></script>
+{% endblock %}

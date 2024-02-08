@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+    
+    <table id="enemies-table">
+        <thead>
+            <tr>
+                <th><button id="sort-by-found-btn" onclick="sortenemies('enemy[0]')">Done</button></th>
+                <th><button id="sort-by-type-btn" onclick="sortenemies('enemy[3]')">Monster</button></th>
+                <th>Tier</th>
+                <th><button id="sort-by-coord-btn" onclick="sortenemies('enemy[2]')">Coordinates</button></th>
+                <th>Location</th>
+                <th>Region</th>
+            </tr>
+        </thead>
+        <tbody id="enemies-body">
+            {% for enemy in enemies %}
+            <tr>
+                <td>
+                    <input type="checkbox" name="e_found_{{ enemy[0] }}" value="1" {% if enemy[1] == 1 %}checked{% endif %} onclick="updateenemy(this, '{{enemy[0]}}')">
+                </td>
+                <td class="e_td">{{ enemy[4] }}</td>
+                <td class="e_td">{{ enemy[3] }}</td>
+                <td class="e_td">{{ enemy[2] }}</td>
+                <td class="e_td">{{ enemy['e_location'] }}</td>
+                <td class="e_td">{{ enemy['e_region'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script src="{{ url_for('static', filename='enemies.js') }}"></script>
+{% endblock %}

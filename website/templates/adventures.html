@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+
+    <form id="adventureform" action="{{ url_for('adventures') }}" method="POST" enctype="multipart/form-data">
+        <div class="row">
+            {% for result in results %}
+            <table class="main_body" style="width: 100%;">
+                <colgroup>
+                    <col span="1">
+                    <col span="2">
+                </colgroup>
+                
+                
+                    <tbody>
+                        <tr>
+                            <th>Info</th>
+                            <th>Side Adventure</th>
+                        </tr>
+
+                        {% if result[1] == 2 %}
+                            <tr>
+                                <td>Name</td>
+                                <td>{{result[3]}}</td>
+                            </tr>
+                            {% if result[6] != None %}
+                                <tr>
+                                    <td>Coordinates</td>
+                                    <td>{{result[6]}}</td>
+                                </tr>
+                            {% endif %}
+                            <tr>
+                                <td>Contact</td>
+                                <td>{{result[4]}}</td>
+                            </tr>
+                            {% if result[7] != None %}
+                                <tr>
+                                    <td>Location</td>
+                                    <td>{{result[7]}}</td>
+                                </tr>
+                            {% endif %}
+                            <tr>
+                                <td>Rewards</td>
+                                <td>{{result[9]}}</td>
+                            </tr>
+                            {% if result[5] != None %}
+                                <tr>
+                                    <td>Description</td>
+                                    <td>{{result[5]}}</td>
+                                </tr>                    
+                            {% endif %}
+                        {% elif result[1] == 1 %}
+                            <tr>
+                                <td>Name</td>
+                                <td>{{result[3]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Contact</td>
+                                <td>{{result[4]}}</td>
+                            </tr>
+                            {% if result[7] != None %}
+                                <tr>
+                                    <td>Location</td>
+                                    <td>{{result[7]}}</td>
+                                </tr>
+                            {% endif %}
+                            {% if result[5] != None %}
+                                <tr>
+                                    <td>Description</td>
+                                    <td>{{result[5]}}</td>
+                                </tr>                    
+                            {% endif %}
+                            {% if result[3] == "Presenting: The Travel Medallion!" %}
+                                <tr>
+                                    <td>Towers Found:</td>
+                                    <td>{{completed_towers}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Travel Medallions:</td>
+                                    {% if completed_towers >= 5 and completed_towers <= 9 %}
+                                    <td>1</td>
+                                    {% elif completed_towers >= 10 and completed_towers <= 14 %}
+                                    <td>2</td>
+                                    {% elif completed_towers >= 15 %}
+                                    <td>3</td>
+                                    {% endif %}
+                                </tr>
+                            {% elif result[3] == "Messages from an Ancient Era" %}
+                                <tr>
+                                    <td>Flower-Shaped Islands Found:</td>
+                                    <td>{{completed_flowers}} of 12</td>
+                                </tr>
+                                <tr>
+                                    <td>Rewards</td>
+                                    <td>{{completed_flowers}}00 Rupees</td>
+                                </tr>
+                            {% endif %}
+                        {% elif result[1] == 0 %}
+                            <tr>
+                                <td>Name</td>
+                                <td>{{result[3]}}</td>
+                            </tr>
+                        {% endif %}
+
+                    <tr>
+                        <td colspan="3">
+                            <label class="adventure_radio_labels" for="undone_{{ result[0] }}"><input type="radio" id="undone_{{ result[0] }}" name="done_{{ result[0] }}" value="0" {% if result[1] == 0 %}checked{% endif %}>Not Started</label>
+                            <label class="adventure_radio_labels" for="started_{{ result[0] }}"><input type="radio" id="started_{{ result[0] }}"name="done_{{ result[0] }}" value="1" {% if result[1] == 1 %}checked{% endif %}>Started</label>
+                            <label class="adventure_radio_labels" for="done_{{ result[0] }}"><input type="radio" id="done_{{ result[0] }}"name="done_{{ result[0] }}" value="2" {% if result[1] == 2 %}checked{% endif %}>Completed</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            {% endfor %}
+        </div>
+    </form>
+<script src="{{ url_for('static', filename='adventures.js') }}"></script>
+{% endblock %}

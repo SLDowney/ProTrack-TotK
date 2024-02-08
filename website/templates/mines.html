@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<select id="item" name="item_region">
+    <option value="-1">Choose One</option>
+    {% for region in unique_regions %}
+      <!-- Populate this dropdown with items from your database -->
+      <option id="{{region}}"
+              type="option"
+              value="{{ region }}">
+              {{ region }}
+      </option>
+    {% endfor %}        
+    </select>
+    <button id="mine_search" type="submit" onclick="updateSort(this)">Search</button>
+{% for mine in mines_data %}
+        <table class="table">
+            <tr>
+                <th class="table_th">Done</th>
+                <td>
+                    <button 
+                        data-item="mine_radio" 
+                        id="{{mine.id}}"
+                        name="'{{mine.name}}"
+                        region="{{mine.region}}"
+                        {% if mine.done == 0 %} 
+                            value=0 
+                            class="item-button mine_{{mine.id}} notfound"
+                        {% elif mine.done == 1 %}
+                            value=1
+                            class="item-button mine_{{mine.id}} completed"
+                        {% endif %}
+                        onclick="cycleValues(this)">
+                        {% if mine.done == 0 %} 
+                            Not Found
+                        {% elif mine.done == 1 %}
+                            Found
+                        {% endif %}
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th class="table_th">Name</th>
+                <td>{{ mine.name }}</td>
+            </tr>
+            <tr>
+                <th class="table_th">Coord</th>
+                <td>{{ mine.coord }}</td>
+            </tr>
+            <tr>
+                <th class="table_th">Region</th>
+                <td>{{ mine.region }}</td>
+            </tr>
+        </table>
+{% endfor %}
+<script src="{{ url_for('static', filename='mines.js') }}"></script>
+{% endblock %}

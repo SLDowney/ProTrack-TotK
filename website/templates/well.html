@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<select id="item" name="item_region">
+    <option value="-1">Choose One</option>
+    {% for region in unique_regions %}
+      <!-- Populate this dropdown with items from your database -->
+      <option id="{{region}}"
+              type="option"
+              value="{{ region }}">
+              {{ region }}
+      </option>
+    {% endfor %}        
+    </select>
+    <button id="well_search" type="submit" onclick="updateSort(this)">Search</button>
+{% for well in wells_data %}
+        <table class="table">
+            <tr>
+                <th class="table_th">Done</th>
+                <td>
+                    <button 
+                        data-item="well_radio" 
+                        id="{{well.id}}"
+                        name="'{{well.name}}"
+                        region="{{well.region}}"
+                        {% if well.done == 0 %} 
+                            value=0 
+                            class="item-button well_{{well.id}} notfound"
+                        {% elif well.done == 1 %}
+                            value=1
+                            class="item-button well_{{well.id}} completed"
+                        {% endif %}
+                        onclick="cycleValues(this)">
+                        {% if well.done == 0 %} 
+                            Not Found
+                        {% elif well.done == 1 %}
+                            Found
+                        {% endif %}
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th class="table_th">Name</th>
+                <td>{{ well.name }}</td>
+            </tr>
+            <tr>
+                <th class="table_th">Coord</th>
+                <td>{{ well.coord }}</td>
+            </tr>
+            <tr>
+                <th class="table_th">Region</th>
+                <td>{{ well.region }}</td>
+            </tr>
+        </table>
+{% endfor %}
+<script src="{{ url_for('static', filename='well.js') }}"></script>
+{% endblock %}

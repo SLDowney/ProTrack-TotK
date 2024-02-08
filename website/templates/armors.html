@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %} 
+{% for set_name, set_data in all_sets_data|dictsort %}
+<table class="armor_tables">
+    <thead>
+        <th class="armor_name" colspan="4">{{ set_data["Set"] }}</th>
+    </thead>
+    <tbody>
+        <tr>
+            {% if "Cap" in set_data %}
+                <td id="armor_title">
+                    <button 
+                        data-item="cave_radio" 
+                        id='{{ set_data["Cap"]["id"] }}'
+                        item='{{ set_data["Cap"]["name"] }}'
+                        {% if set_data["Cap"]["done"] == 0 %} 
+                            value=0 
+                            class="item-button notfound"
+                        {% elif set_data["Cap"]["done"] == 1 %}
+                            value=1
+                            class="item-button completed"
+                        {% endif %}
+                        onclick="cycleValues(this)">
+                        {{ set_data["Cap"]["name"] }}
+                    </button>
+                </td>
+            {% endif %}
+            {% if "Tunic" in set_data %}
+                <td id="armor_title">
+                    <button 
+                        data-item="cave_radio" 
+                        id='{{ set_data["Tunic"]["id"] }}'
+                        item='{{ set_data["Tunic"]["name"] }}'
+                        {% if set_data["Tunic"]["done"] == 0 %} 
+                            value=0 
+                            class="item-button notfound"
+                        {% elif set_data["Tunic"]["done"] == 1 %}
+                            value=1
+                            class="item-button completed"
+                        {% endif %}
+                        onclick="cycleValues(this)">
+                        {{ set_data["Tunic"]["name"] }}
+                    </button>
+                </td>
+            {% endif %}
+            {% if "Trousers" in set_data %}
+                <td id="armor_title">
+                    <button 
+                        data-item="cave_radio" 
+                        id='{{ set_data["Trousers"]["id"] }}'
+                        item='{{ set_data["Trousers"]["name"] }}'
+                        {% if set_data["Trousers"]["done"] == 0 %} 
+                            value=0 
+                            class="item-button notfound"
+                        {% elif set_data["Trousers"]["done"] == 1 %}
+                            value=1
+                            class="item-button completed"
+                        {% endif %}
+                        onclick="cycleValues(this)">
+                        {{ set_data["Trousers"]["name"] }}
+                    </button>
+                </td>
+            {% endif %}
+        </tr>
+    </tbody>
+</table>
+{% endfor %}
+
+<script src="{{ url_for('static', filename='armors.js') }}"></script>
+{% endblock %}

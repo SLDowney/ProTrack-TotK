@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for shrine in shrines_data %}
+    <table class="shrine_table">
+        <thead>
+            <tr>
+                <th class="table_name" colspan="4">{{ shrine.name }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2">{{ shrine.title }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">{{ shrine.location }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">{{ shrine.region }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">{{ shrine.coord }}</td>
+            </tr>
+            {% if shrine.quest != "" %}
+                <tr>
+                    <td colspan="2">{{ shrine.quest }}</td>
+                </tr>
+            {% endif %}
+            {% for chest in shrine.chests %}
+                <tr>
+                    <td colspan="2">
+                        <button 
+                            data-item="shrine_radio" 
+                            id="{{ shrine.id }}"
+                            chest_id="{{ chest.chests_id }}"
+                            chest_item="{{chest.chest}}"
+                            {% if chest.chest_done == 0 %} 
+                                value=0 
+                                class="chest-button notfound"
+                            {% elif chest.chest_done == 1 %}
+                                value=1
+                                class="chest-button completed"
+                            {% endif %}
+                            onclick="cycleChests(this)">
+                            {% if chest.chest == "" %}
+                                TBA
+                            {% else %}
+                                {% if chest.chest_done == 0 %} 
+                                    ???
+                                {% else %}
+                                    {{ chest.chest }}
+                                {% endif %}
+                            {% endif %}
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="4">
+                    <button 
+                        data-item="shrine_radio" 
+                        id="{{ shrine.id }}"
+                        title="{{ shrine.title }}"
+                        chest="{{ shrine.chest }}"
+                        region="{{ shrine.region }}"
+                        quest="{{ shrine.quest }}"
+                        {% if shrine.done == 0 %} 
+                            value=0 
+                            class="item-button shrine_{{ shrine.id }} notfound"
+                        {% elif shrine.done == 1 %}
+                            value=1
+                            class="item-button shrine_{{ shrine.id }} started"
+                        {% elif shrine.done == 2 %}
+                            value=2
+                            class="item-button shrine_{{ shrine.id }} completed"
+                        {% endif %}
+                        onclick="cycleValues(this)">
+                        {% if shrine.done == 0 %} 
+                            Not Found
+                        {% elif shrine.done == 1 %}
+                            Started
+                        {% elif shrine.done == 2 %}
+                            Completed
+                        {% endif %}
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endfor %}
+<script src="{{ url_for('static', filename='shrines.js') }}"></script>
+{% endblock %}

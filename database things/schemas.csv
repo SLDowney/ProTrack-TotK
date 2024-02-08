@@ -1,0 +1,46 @@
+schema_id;schema_done;schema_type;schema_name;schema_coord;schema_location;schema_region;schema_parts
+1;0;Yiga;Liftoff Glider;2963, -2571, -0507;Kimnaz;East Necluda Depths;
+2;0;Yiga;Raiding Plane;-4546, -2170, -0489;Rasinaduk;Gerudo Desert Depths;
+3;0;Yiga;Fanboat;-3075, -1580, -0913;Umamustor;Gerudo Highlands Depths;
+4;0;Yiga;Fishing Trawler;-0397, 1776, -0623;Netamnet;Great Hyrule Forest Depths;
+5;0;Yiga;Headlight Raft;4112, 3215, -0611;Ui-ihcoj;Deep Akkala Depths;
+6;0;Yiga;All-Purpose Raft;-3380, 0665, -0619;Koro-nui;Tabantha Frontier Depths;
+7;0;Yiga;Monocycle;-1225, -2611, -0480;Koradat;Gerudo Highlands Depths;Small Wheel, Steering Stick, Light x2, Stabilizer
+8;0;Yiga;Three Wheeler;-1856, -0735, -0527;Muzasu;Hyrule Ridge Depths;
+9;0;Yiga;Cargo Carrier;-1332, 1496, -0597;Uoyoyuik;Central Hyrule Depths;
+10;0;Yiga;Big Rig;2667, 1578, -0591;Anonisik;Eldin Canyon Depths;
+11;0;Yiga;Wagon;3606, 2281, -0478;Akinatanis;Akkala Highlands Depths;
+12;0;Yiga;Excavator;-3708, 3099, -0782;Muotue;Hebra Mountains Depths;
+13;0;Yiga;Assault Cart;3273, 3697, -0660;Sikutamak;Deep Akkala Depths;
+14;0;Yiga;Tank;3261, -1445, -0657;Uogoj;East Necluda Depths;
+15;0;Yiga;Instant Kitchen;1168, 0600, -0408;Nojoj;Central Hyrule Depths;
+16;0;Yiga;Icebreaker;3618, -0569, -0455;Kegopa;Lanayru Great Spring Depths;
+17;0;Yiga;Charged Charger;0622, 3698, -0540;Katenim;Eldin Mountains Depths;
+18;0;Yiga;Beam Turret;-2409, -3485, -0394;Amakawis;Gerudo Desert Depths;
+19;0;Yiga;Beam Spinner;0246, -2170, -0486;Busus;West Necluda Depths;
+20;0;Yiga;Whirling Basher;-1751, 3107, -0679;U-nazohso;Hebra Mountains Depths;
+21;0;Yiga;Flamethrower Baloon;-2822, 0902, -0565;Tikanur;Hyrule Ridge Depths;Balloon, Big Wheel, Flame Emitter x2
+22;0;Yiga;Shock Trap;-2694, -2882, -0467;Mihcihc;Gerudo Desert Depths;
+23;0;Yiga;Bomb Boquet;-1620, 0247, -0482;Kawakanis;Central Hyrule Depths;
+24;0;Yiga;Triple Cannon;4412, 0637, -0709;Sisinatag;Akkala Highlands Depths;
+25;0;Yiga;Aerial Cannon;-0130, 2867, -0634;Nikakik;Great Hyrule Forest Depths;
+26;0;Yiga;Scatter Trap;2078, -1625, -0464;Sohse;East Necluda Depths;
+27;0;Yiga;Smoke Rocket;-4457, -0994, -0861;Mustuto;Gerudo Highlands Depths;
+28;0;Yiga;Super Spring;2542, -0544, -0476;Takaruk;Lanayru Great Spring Depths;
+29;0;Yiga;Vertical Escape;-3262, -3780, -0494;Gataharak;Gerudo Desert Depths;
+30;0;Yiga;Sprinkler System;-1903, 2095, -0682;Aduon;Hebra Mountains Depths;
+31;0;Yiga;Rainmaker;1539, 0692, -0439;Uihcoke;Eldin Canyon Depths;
+32;0;Yiga;Water Freezer;0417, -3673, -0498;Kohsustu;Faron Grasslands Depths;
+33;0;Yiga;Floodlights;-2865, 2918, -0931;Mu-ufatar;Hebra Mountains Depths;
+34;0;Stone;Dirigible;2946, -3338, -0453;Abandoned Lurelin Mine;East Necluda Depths;
+35;0;Stone;Beam Cycle;-1122, -1902, 0101;Tsutsu-um Shrine;Hyrule Field;
+36;0;Stone;Bridge;3562, -2209, -0588;Abandoned Hateno Mine;East Necluda Depths;
+37;0;Stone;Rocket Platform;-3480, 1883, -0417;Abandoned Hebra Mine;Tabantha Frontier Depths;Battery, Rocket, Hover Stone
+38;0;Stone;Automated Ally;1641, 2397, -0824;Abandoned Eldin Mine;Eldin Canyon Depths;
+39;0;Stone;Launch Pad;1796, -1226, -0629;Abandoned Kakariko Mine;West Necluda Depths;
+40;0;Stone;Instant Cannon;3986, 1583, -0576;Abandoned Tarrey Mine;Akkala Highlands Depths;
+41;0;Stone;Instant Scaffold;-3210, -2473, -0475;Abandoned Kara Kara Mine;Gerudo Desert Depths;
+42;1;Stone;Fanplane;-0821, -1940, -0523;Great Abandoned Central Mine;Hyrule Field Depths;Fan x3, Wing
+43;0;Stone;Hot-Air Balloon;-0256, 0153, 0020;Lookout Landing (Josha);Hyrule Field;Balloon, Balloon Base
+44;0;Stone;Hovercraft;-3846, -2941, -0487;Abandoned Gerudo Mine;Gerudo Desert Depths;Steering Stick, Hoverboard, Fan, Light
+45;0;Stone;Bolt Boat;3257, 0593, -0750;Abandoned Lanayru Mine;Lanayru Great Spring Depths;

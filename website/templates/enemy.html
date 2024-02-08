@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+<form id="enemy" method="POST" action="/enemy">
+    <table id="enemies-table">
+        <thead>
+            <tr>
+                <th><button id="sort-by-found-btn" onclick="sortenemies('e_found')">Done</button></th>
+                <th><button id="sort-by-type-btn" onclick="sortenemies('e_monster')">Monster</button></th>
+                <th><button id="sort-by-location-btn" onclick="sortenemies('e_location')">Tier</button></th>
+                <th><button id="sort-by-coord-btn" onclick="sortenemies('e_coord')">Coordinates</button></th>
+                <th>Location</th>
+                <th>Region</th>
+                <th>Map</th>
+            </tr>
+        </thead>
+        <tbody id="enemies-body">
+            {% for en in enemy %}
+            <tr>
+                <td>
+                    <input type="checkbox" name="e_found_{{ en[0] }}" value="1" {% if en[1] == 1 %}checked{% endif %} onclick="updateen(this, en[0])">
+                </td>
+                <td class="e_td">{{ en['e_monster'] }}</td>
+                <td class="e_td">{{ en['e_color'] }}</td>
+                <td class="e_td">{{ en['e_coord'] }}</td>
+                <td class="e_td">{{ en['e_location'] }}</td>
+                <td class="e_td">{{ en['e_region'] }}</td>
+                <td class="e_td">{{ en['e_map'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
+    <script src="{{ url_for('static', filename='enemy.js') }}"></script>
+{% endblock %}

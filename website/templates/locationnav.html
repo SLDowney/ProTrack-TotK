@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+
+        <div class="locations-nav-container">
+            <div class="row">
+                <div class="locations-nav">
+                    <a href="{{ url_for('index') }}">
+                        <button class="location-buttons">Home</button>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="locations-nav">
+                        <a href="{{ url_for('chasm') }}">
+                            <button class="location-buttons">Chasms</button>
+                        </a>
+                    </div>
+                    <div class="locations-nav">
+                        <a href="{{ url_for('depths_mine') }}">
+                            <button class="location-buttons">Depths Mines</button>
+                        </a>
+                    </div>
+                    <div class="locations-nav">
+                        <a href="{{ url_for('coliseum') }}">
+                            <button class="location-buttons">Coliseums</button>
+                        </a>
+                    </div> 
+                    <div class="locations-nav">
+                        <a href="{{ url_for('bargainer') }}">
+                            <button class="location-buttons">Bargainer Statues</button>
+                        </a>
+                    </div>
+                    <div class="locations-nav">
+                        <a href="{{ url_for('flowerislands') }}">
+                            <button class="location-buttons">Flower-Shaped Islands</button>
+                        </a>
+                    </div> 
+                </div>
+                <div class="col">
+                    <div class="locations-nav">
+                        <a href="{{ url_for('great_fairy_fountain') }}">
+                            <button class="location-buttons">Great Fairy Fountains</button>
+                        </a>
+                    </div>
+                    <div class="locations-nav">
+                        <a href="{{ url_for('location') }}">
+                            <button class="location-buttons">Locations</button>
+                        </a>
+                    </div>
+                    <div class="locations-nav">
+                        <a href="{{ url_for('well') }}">
+                            <button class="location-buttons">Wells</button>
+                        </a>
+                    </div> 
+                    <div class="locations-nav">
+                        <a href="{{ url_for('device_dispenser') }}">
+                            <button class="location-buttons">Device Dispensers</button>
+                        </a>
+                    </div> 
+                    <div class="locations-nav">
+                        <a href="{{ url_for('location_schemas') }}">
+                            <button class="location-buttons">Schemas</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

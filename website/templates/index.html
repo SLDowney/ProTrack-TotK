@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="home">
+    <h2>Overall: {{overall}}%</h2>
+    <table>
+        <tr>
+            <th></th>
+            <th>Completed</th>
+            <th>Total</th>
+            <th>Percent</th>
+        </tr>
+        <tr>
+            <td>Shrines</td>
+            <td>{{shrinesper}}</td>
+            <td>152</td>
+            <td>{{ ((shrinesper / 152) * 100) | round | int }}</td>
+        </tr>
+        <tr>
+            <td>Caves</td>
+            <td>{{cavesper}}</td>
+            <td>{{total_caves}}</td>
+            <td>{{ ((cavesper / total_caves) * 100) | round | int }}</td>
+        </tr>
+        <tr>
+            <td>Koroks</td>
+            <td>{{koroksper}}</td>
+            <td>900</td>
+            <td>{{ ((koroksper / 900) * 100) | round | int }}</td>
+        </tr>
+        <tr>
+            <td>Lightroots</td>
+            <td>{{lightrootsper}}</td>
+            <td>{{total_lightroots}}</td>
+            <td>{{ ((lightrootsper / total_lightroots) * 100) | round | int }}</td>
+        </tr>
+        <tr>
+            <td>Chests</td>
+            <td>{{chestsper}}</td>
+            <td>{{total_chests}}</td>
+            <td>{{ ((chestsper / total_chests) * 100) | round | int }}</td>
+        </tr>
+        <tr>
+            <td>Armors</td>
+            <td>{{armorsper}}</td>
+            <td>{{total_armors}}</td>
+            <td>{{ ((armorsper / total_armors) * 100) | round | int }}</td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}

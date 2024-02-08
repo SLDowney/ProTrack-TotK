@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="percentage">
+    <span></span>
+</div>
+    <div class="compendium">
+        <table class="compendium_table">
+            <th colspan="3" class="table_title">Creatures</th>
+            {% for compendium in creatures_data %}
+            <tr>
+                <td>{{ compendium.id }}</td>
+                <td class="td_button">
+                    <button 
+                        data-item="radio" 
+                        id="{{compendium.id}}"
+                        item="{{compendium.item}}"
+                        type="{{compendium.type}}"
+                        {% if compendium.done == 0 %} 
+                            value=0 
+                            class="item-button {{compendium.id}} notfound"
+                        {% elif compendium.done == 1 %}
+                            value=1
+                            class="item-button {{compendium.id}} completed"
+                        {% endif %}
+                        onclick="cycleValues(this)">
+                        {% if compendium.done == 0 %} 
+                            Not Found
+                        {% elif compendium.done == 1 %}
+                            Found
+                        {% endif %}
+                    </button>
+                </td>
+                <td class="td_item">{{ compendium.item }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="compendium">
+        <table class="compendium_table">
+            <th colspan="3" class="table_title">Monsters</th>
+            {% for compendium in monsters_data %}
+            <tr>
+                <td>{{ compendium.id }}</td>
+                <td class="td_button">
+                    <button 
+                        data-item="radio" 
+                        id="{{compendium.id}}"
+                        item="{{compendium.item}}"
+                        type="{{compendium.type}}"
+                        {% if compendium.done == 0 %} 
+                            value=0 
+                            class="item-button {{compendium.id}} notfound"
+                        {% elif compendium.done == 1 %}
+                            value=1
+                            class="item-button {{compendium.id}} completed"
+                        {% endif %}
+                        onclick="cycleValues(this)">
+                        {% if compendium.done == 0 %} 
+                            Not Found
+                        {% elif compendium.done == 1 %}
+                            Found
+                        {% endif %}
+                    </button>
+                </td>
+                <td>{{ compendium.item }}</td>
+                
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="compendium">
+        <table class="compendium_table">
+            <th colspan="3" class="table_title">Materials</th>
+            {% for compendium in materials_data %}
+            <tr>
+                <td>{{ compendium.id }}</td>
+                <td class="td_button">
+                    <button 
+                        data-item="radio" 
+                        id="{{compendium.id}}"
+                        item="{{compendium.item}}"
+                        type="{{compendium.type}}"
+                        {% if compendium.done == 0 %} 
+                            value=0 
+                            class="item-button {{compendium.id}} notfound"
+                        {% elif compendium.done == 1 %}
+                            value=1
+                            class="item-button {{compendium.id}} completed"
+                        {% endif %}
+                        onclick="cycleValues(this)">
+                        {% if compendium.done == 0 %} 
+                            Not Found
+                        {% elif compendium.done == 1 %}
+                            Found
+                        {% endif %}
+                    </button>
+                </td>
+                <td>{{ compendium.item }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="compendium">
+        <table class="compendium_table">
+            <th colspan="3" class="table_title">Equipment</th>
+            {% for compendium in equipment_data %}
+            <tr>
+                <td>{{ compendium.id }}</td>
+                <td class="td_button">
+                    <button 
+                        data-item="radio" 
+                        id="{{compendium.id}}"
+                        item="{{compendium.item}}"
+                        type="{{compendium.type}}"
+                        {% if compendium.done == 0 %} 
+                            value=0 
+                            class="item-button {{compendium.id}} notfound"
+                        {% elif compendium.done == 1 %}
+                            value=1
+                            class="item-button {{compendium.id}} completed"
+                        {% endif %}
+                        onclick="cycleValues(this)">
+                        {% if compendium.done == 0 %} 
+                            Not Found
+                        {% elif compendium.done == 1 %}
+                            Found
+                        {% endif %}
+                    </button>
+                </td>
+                <td>{{ compendium.item }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="compendium">
+        <table class="compendium_table">
+            <th colspan="3" class="table_title">Treasure</th>
+            {% for compendium in treasure_data %}
+            <tr>
+                <td>{{ compendium.id }}</td>
+                <td class="td_button">
+                    <button 
+                        data-item="radio" 
+                        id="{{compendium.id}}"
+                        item="{{compendium.item}}"
+                        type="{{compendium.type}}"
+                        {% if compendium.done == 0 %} 
+                            value=0 
+                            class="item-button {{compendium.id}} notfound"
+                        {% elif compendium.done == 1 %}
+                            value=1
+                            class="item-button {{compendium.id}} completed"
+                        {% endif %}
+                        onclick="cycleValues(this)">
+                        {% if compendium.done == 0 %} 
+                            Not Found
+                        {% elif compendium.done == 1 %}
+                            Found
+                        {% endif %}
+                    </button>
+                </td>
+                <td>{{ compendium.item }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+<script src="{{ url_for('static', filename='compendium.js') }}"></script>
+{% endblock %}
