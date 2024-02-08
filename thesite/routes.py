@@ -1,6 +1,9 @@
-from . import app, db,render_template, request, url_for, redirect, jsonify
-from .models import *
-from .functions import *
+from thesite.application_v2 import db,render_template, request, url_for, redirect, jsonify
+from flask import Blueprint
+from models import *
+from functions import *
+
+routes_bp = Blueprint('routes', __name__)
 
 @app.route('/')
 def index():

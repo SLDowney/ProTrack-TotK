@@ -1,5 +1,5 @@
-from .models import *
-from . import app, db
+from models import *
+from thesite.application_v2 import app, db
 
 def armor_percent():
     total_armor = Armors.query.count()
