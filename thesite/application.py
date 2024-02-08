@@ -1,8 +1,12 @@
 import os
+import sys
+sys.path.append('C:/Users/stacy/OneDrive/Desktop/yes/ProTrack-TotK/thesite/models.py')
 from flask import Flask, render_template, request, url_for, redirect, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from website.models import *
+from models import *
 from sqlalchemy.sql import func
+
+
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 

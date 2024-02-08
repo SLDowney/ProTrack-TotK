@@ -1,4 +1,4 @@
-from . import db
+from application import db
 
 class Chests(db.Model):
     chest_id = db.Column(db.Integer, primary_key=True)
