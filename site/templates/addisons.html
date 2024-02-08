@@ -13,30 +13,30 @@
       </option>
     {% endfor %}        
     </select>
-    <button id="addison_search" type="submit" onclick="updateSort(this)">Search</button>
-{% for addison in addisons_data %}
-    <div class="addison">
-        <table class="addison_table">
+    <button id="korok_search" type="submit" onclick="updateSort(this)">Search</button>
+{% for korok in koroks_data %}
+    <div class="korok">
+        <table class="korok_table">
             <tr>
                 <th class="table_th">Done</th>
                 <td>
                     <button 
-                        data-item="addison_radio" 
-                        id="{{addison.addison_id}}"
-                        item="{{addison.addison_item}}"
-                        type="{{addison.addison_type}}"
-                        region="{{addison.region}}"
-                        {% if addison.addison_done == 0 %} 
+                        data-item="korok_radio" 
+                        id="{{korok.korok_id}}"
+                        item="{{korok.korok_item}}"
+                        type="{{korok.korok_type}}"
+                        region="{{korok.region}}"
+                        {% if korok.korok_done == 0 %} 
                             value=0 
-                            class="item-button addison_{{addison.addison_id}} notfound"
-                        {% elif addison.addison_done == 1 %}
+                            class="item-button korok_{{korok.korok_id}} notfound"
+                        {% elif korok.korok_done == 1 %}
                             value=1
-                            class="item-button addison_{{addison.addison_id}} completed"
+                            class="item-button korok_{{korok.korok_id}} completed"
                         {% endif %}
                         onclick="cycleValues(this)">
-                        {% if addison.addison_done == 0 %} 
+                        {% if korok.korok_done == 0 %} 
                             Not Found
-                        {% elif addison.addison_done == 1 %}
+                        {% elif korok.korok_done == 1 %}
                             Found
                         {% endif %}
                     </button>
@@ -44,36 +44,36 @@
             </tr>
             <tr>
                 <th class="table_th">Name</th>
-                <td class="table_td">{{ addison.addison_name }}</td>
+                <td class="table_td">{{ korok.korok_name }}</td>
             </tr>
             <tr>
                 <th class="table_th">Type</th>
-                <td class="table_td">{{ addison.addison_type }}</td>
+                <td class="table_td">{{ korok.korok_type }}</td>
             </tr>
-            {% if addison.startcoord != "\\N" %}
+            {% if korok.startcoord != "\\N" %}
             <tr>
                 <th class="table_th">Start Coord</th>
-                <td class="table_td">{{ addison.startcoord }}</td>
+                <td class="table_td">{{ korok.startcoord }}</td>
             </tr>
             {% endif %}
             <tr>
                 <th class="table_th">Coord</th>
-                <td class="table_td">{{ addison.coord }}</td>
+                <td class="table_td">{{ korok.coord }}</td>
             </tr>
             <tr>
                 <th class="table_th">Location</th>
-                <td class="table_td">{{ addison.location }}</td>
+                <td class="table_td">{{ korok.location }}</td>
             </tr>
             <tr>
                 <th class="table_th">Region</th>
-                <td class="table_td">{{ addison.region }}</td>
+                <td class="table_td">{{ korok.region }}</td>
             </tr>
             <tr>
                 <th class="table_th">Tower</th>
-                <td class="table_td">{{ addison.tower }}</td>
+                <td class="table_td">{{ korok.tower }}</td>
             </tr>
         </table>
     </div>
 {% endfor %}
-<script src="{{ url_for('static', filename='addisons.js') }}"></script>
+<script src="{{ url_for('static', filename='koroks.js') }}"></script>
 {% endblock %}
